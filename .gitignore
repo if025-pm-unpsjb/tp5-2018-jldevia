@@ -6,6 +6,9 @@
 *.lo
 *.o
 *.obj
+*.a
+*.elf
+*.bin
 
 # Precompiled Headers
 *.gch
@@ -40,3 +43,6 @@
 .cproject
 language.settings.xml
 *.launch
+
+# ignore contents of build directory
+build/**
