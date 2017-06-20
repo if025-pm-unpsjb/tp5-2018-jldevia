@@ -46,13 +46,47 @@ LIBRARIES = -lmbed
 
 LINKER_SCRIPT = ./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/LPC1768.ld
 
-CPU = -mcpu=cortex-m3 -mthumb
-CC_FLAGS = $(CPU) -c -g -fno-common -fmessage-length=0 -Wall -fno-exceptions -ffunction-sections -fdata-sections -fomit-frame-pointer -fno-rtti -include mbed_config.h
-CC_FLAGS += -MMD -MP
-CC_SYMBOLS += -DTARGET_LPC1768 -DTARGET_M3 -DTARGET_NXP -DTARGET_LPC176X -DTARGET_MBED_LPC1768 -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -D__CORTEX_M3 -DARM_MATH_CM3 -DMBED_BUILD_TIMESTAMP=1414254042.69 -D__MBED__=1
+CPU += -mcpu=cortex-m3 
+CPU += -mthumb
 
-LD_FLAGS = -mcpu=cortex-m3 -mthumb -Wl,--gc-sections -u _printf_float -u _scanf_float
-LD_SYS_LIBS = -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys
+CC_FLAGS += $(CPU) 
+CC_FLAGS += -c
+CC_FLAGS += -g
+CC_FLAGS += -fno-common
+CC_FLAGS += -fmessage-length=0
+CC_FLAGS += -Wall
+CC_FLAGS += -fno-exceptions
+CC_FLAGS += -ffunction-sections
+CC_FLAGS += -fdata-sections
+CC_FLAGS += -fomit-frame-pointer
+CC_FLAGS += -fno-rtti
+CC_FLAGS += -include mbed_config.h
+CC_FLAGS += -MMD
+CC_FLAGS += -MP
+
+CC_SYMBOLS += -DTARGET_LPC1768
+CC_SYMBOLS += -DTARGET_M3
+CC_SYMBOLS += -DTARGET_NXP
+CC_SYMBOLS += -DTARGET_LPC176X
+CC_SYMBOLS += -DTARGET_MBED_LPC1768
+CC_SYMBOLS += -DTOOLCHAIN_GCC_ARM
+CC_SYMBOLS += -DTOOLCHAIN_GCC
+CC_SYMBOLS += -D__CORTEX_M3
+CC_SYMBOLS += -DARM_MATH_CM3
+CC_SYMBOLS += -DMBED_BUILD_TIMESTAMP=1414254042.69
+CC_SYMBOLS += -D__MBED__=1
+
+LD_FLAGS += $(CPU)
+LD_FLAGS += -Wl,--gc-sections
+LD_FLAGS += -u _printf_float
+LD_FLAGS += -u _scanf_float
+
+LD_SYS_LIBS += -lstdc++
+LD_SYS_LIBS += -lsupc++
+LD_SYS_LIBS += -lm
+LD_SYS_LIBS += -lc
+LD_SYS_LIBS += -lgcc
+LD_SYS_LIBS += -lnosys
 
 ifeq ($(DEBUG), 1)
   CC_FLAGS += -DDEBUG -O0
@@ -74,13 +108,6 @@ all: $(BUILD_DIR)/$(PROJ).bin size
 clean:
 	+@echo "Cleaning files..."
 	@rm -f $(BUILD_DIR)/$(PROJ).bin $(BUILD_DIR)/$(PROJ).elf $(OBJECTS) $(DEPS)
-
-.s.o:
-	$(AS) $(CPU) -o $@ $<
-
-.c.o:
-	+@echo "Compile: $<"
-	@$(CC)  $(CC_FLAGS) $(CC_SYMBOLS) -std=gnu99   $(INCLUDE_PATHS) -o $@ $<	
 
 .cpp.o:
 	+@echo "Compile: $<"
