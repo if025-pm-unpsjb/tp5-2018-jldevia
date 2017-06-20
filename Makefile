@@ -38,7 +38,7 @@ MBED_INCLUDE_PATHS += -I./mbed/TARGET_LPC1768/TARGET_NXP/TARGET_LPC176X/
 MBED_INCLUDE_PATHS += -I./mbed/TARGET_LPC1768/TARGET_NXP/TARGET_LPC176X/device
 MBED_INCLUDE_PATHS += -I./mbed/TARGET_LPC1768/TARGET_NXP/TARGET_LPC176X/TARGET_MBED_LPC1768
 
-INCLUDE_PATHS += -I.
+INCLUDE_PATHS += -I./
 INCLUDE_PATHS += $(MBED_INCLUDE_PATHS) 
 
 LIBRARY_PATHS += -L./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM
@@ -47,7 +47,7 @@ LIBRARIES = -lmbed
 LINKER_SCRIPT = ./mbed/TARGET_LPC1768/TOOLCHAIN_GCC_ARM/LPC1768.ld
 
 CPU = -mcpu=cortex-m3 -mthumb
-CC_FLAGS = $(CPU) -c -g -fno-common -fmessage-length=0 -Wall -fno-exceptions -ffunction-sections -fdata-sections -fomit-frame-pointer -fno-rtti
+CC_FLAGS = $(CPU) -c -g -fno-common -fmessage-length=0 -Wall -fno-exceptions -ffunction-sections -fdata-sections -fomit-frame-pointer -fno-rtti -include mbed_config.h
 CC_FLAGS += -MMD -MP
 CC_SYMBOLS += -DTARGET_LPC1768 -DTARGET_M3 -DTARGET_NXP -DTARGET_LPC176X -DTARGET_MBED_LPC1768 -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -D__CORTEX_M3 -DARM_MATH_CM3 -DMBED_BUILD_TIMESTAMP=1414254042.69 -D__MBED__=1
 
