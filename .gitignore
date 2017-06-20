@@ -39,6 +39,7 @@
 !mbed/**/*.a
 
 # Eclipse project files
+.settings
 .project
 .cproject
 language.settings.xml
