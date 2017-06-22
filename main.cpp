@@ -7,6 +7,7 @@ DigitalOut led1(LED1);
 
 void thread1 (void* params)
 {
+	// to use some heap memory
 	uint8_t * buf = ( uint8_t * ) pvPortMalloc( sizeof( uint8_t ) * 1024 );
 	buf[0] = 0;
 
