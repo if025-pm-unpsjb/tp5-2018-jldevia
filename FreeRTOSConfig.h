@@ -116,6 +116,12 @@ extern uint32_t SystemCoreClock;
 /* Software timer definitions. */
 #define configUSE_TIMERS 0
 
+#define configRECORD_STACK_HIGH_ADDRESS 1  /* 1: record stack high address for the debugger, 0: do not record stack high address */
+
+/* For tracing. */
+#define configUSE_STATS_FORMATTING_FUNCTIONS      1
+#define configUSE_TRACE_FACILITY                  1
+
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */
 #define INCLUDE_vTaskPrioritySet		1
@@ -163,7 +169,12 @@ standard names. */
 
 #endif /* FREERTOS_CONFIG_H */
 
-/* Defined in FreeRTOSConfig.h. */
+/**
+ * See: http://www.freertos.org/rtos-run-time-stats.html
+ */
 extern void vConfigureTimerForRunTimeStats( void );
 #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vConfigureTimerForRunTimeStats()
 #define portGET_RUN_TIME_COUNTER_VALUE() LPC_TIM0->TC
+
+/* Integrates the Tracealyzer recorder with FreeRTOS */
+#include "trcRecorder.h"
