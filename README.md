@@ -6,11 +6,11 @@ A continuación como se describe como importarlo, importarlo en Eclipse y ejecut
 ---
 
 ## Clonar el proyecto
-Clonar el proyecto de prueba usando Git: https://github.com/unpsjb-rtsg/mbed-blinky-makefile
+Clonar el proyecto usando Git:
 * Desde un cliente, usar la opción **[Clone]**.
 * Desde la linea de comandos utilizar el comando `git clone`.
 
-*Tip*: si tienen cuenta en GitHub, pueden probar con realizar un *fork* del proyecto.
+*Tip*: pueden probar también realizar un *fork* del proyecto.
 
 ---
 
@@ -40,7 +40,7 @@ Si el proyecto compilo correctamente, en la vista **[Console]** debe indicarse q
 
 ---
 
-## Ejecutar
+## Configurar entorno PyOCD
 Primero, verificar que el `pyocd-gdbserver` este correctamente configurado en Eclipse:
 * Seleccionar **[Windows > Preferences]** en el menú de Eclipse.
 * En la nueva ventana, seleccionar **[Run / Debug > PyOCD]** en la lista izquierda.
@@ -55,5 +55,9 @@ A continuación se creará y ejecutará una configuración de *debug*:
     * En la pestaña **[Debugger]**, el campo *Executable* debe contener el valor `${pyocd_path}\${pyocd_executable}`. Estas dos variables son reemplazadas por los valores especificados el menú **[Run / Debug > PyOCD]**.
     * En la pestaña **[Common]**, seleccionar la opción **[Shared file:]**, indicando en el campo el nombre del proyecto. De esta manera el archivo `*.launch` con la configuración es guardado dentro del proyecto.
     * Hacer clic en el botón **[Apply]**.
-* Con la placa mbed LPC1768 conectada a la PC, hacer clic en el botón **[Debug]**. Es posible que Eclipse pregunte si se desea cambiar a la perspectiva *Debug*, responder que sí.
+
+---
+    
+## Ejecutar
+Con la placa mbed LPC1768 conectada a la PC, hacer clic en el botón **[Debug]**. Es posible que Eclipse pregunte si se desea cambiar a la perspectiva *Debug*, responder que sí.
 
