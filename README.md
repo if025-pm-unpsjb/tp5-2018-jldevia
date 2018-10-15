@@ -23,7 +23,7 @@ Una vez clonado localmente, agregar el proyecto en Eclipse:
 
 El proyecto debe aparecer ahora en la vista *Project Explorer*: 
 * Hacer clic derecho sobre el mismo, y seleccionar **[Properties]** en el menú contextual.
-* En la nueva ventana, seleccionar **[C/C++ Build > Settings]**. Si todo esta bien configurado, en la pestaña **[Toolchains]**, el campo *Name* debe indicar *GNU Tools for ARM Embedded Processors*.
+* En la nueva ventana, seleccionar **[C/C++ Build > Settings]**. En la sección derecha de la ventana, en la pestaña **[Toolchains]**, el campo *Name* debe indicar *GNU MCU Eclipse ARM Embedded GCC (arm-none-eabi-gcc)* o bien *GNU Tools for ARM Embedded Processors*.
 * Hacer clic en **[Ok]**.
 
 Verificar que dentro del proyecto exista el directorio `build`. En caso que no exista, crearlo haciendo clic derecho sobre el proyecto en la vista *Project Explorer*, y seleccionando **[New > Folder]** en el menú contextual.
@@ -49,10 +49,11 @@ Primero, verificar que el `pyocd-gdbserver` este correctamente configurado en Ec
 
 A continuación se creará y ejecutará una configuración de *debug*:
 * Seleccionar **[Run > Debug Configurations...]** en el menú de Eclipse.
-* En la nueva ventana, hacer doble clic sobre **[GDB PyOCD debugging]** en el menú izquierdo. Esto crea una nueva configuración basada en este perfil.
+* En la nueva ventana, hacer doble clic sobre **[GDB PyOCD debugging]** en el menú izquierdo. Esto crea una nueva configuración basada en este perfil, con el nombre del proyecto activo.
+* Seleccionar el nuevo perfil creado (*mbed-blinky-makefile Default*).
 * En el panel derecho:
     * En la pestaña **[Main]**, el campo *Project* debe indicar el nombre del proyecto ('mbed-blinky-makefile'). El campo *C/C++ Application* debe indicar el nombre del archivo ELF, en este caso `build/blink.elf`. Si no estuviera presente escribir el nombre del mismo, o bien hacer clic en el botón **[Search project]** o **[Browse]** para buscarlo.
-    * En la pestaña **[Debugger]**, el campo *Executable* debe contener el valor `${pyocd_path}\${pyocd_executable}`. Estas dos variables son reemplazadas por los valores especificados el menú **[Run / Debug > PyOCD]**.
+    * En la pestaña **[Debugger]**, el campo *Executable* debe contener el valor `${pyocd_path}\${pyocd_executable}`. Estas dos variables son reemplazadas por los valores especificados el menú **[MCU > PyOCD]**.
     * En la pestaña **[Common]**, seleccionar la opción **[Shared file:]**, indicando en el campo el nombre del proyecto. De esta manera la configuración para debugging es guardada en un archivo `*.launch` dentro del proyecto.
     * Hacer clic en el botón **[Apply]**. No cerrar la ventana aún.
     
