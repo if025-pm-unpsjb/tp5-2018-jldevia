@@ -111,7 +111,7 @@ clean:
 
 .cpp.o:
 	+@echo "Compile: $<"
-	@$(CPP) $(CC_FLAGS) $(CC_SYMBOLS) -std=gnu++98 $(INCLUDE_PATHS) -o $@ $<	
+	@$(CPP) $(CC_FLAGS) $(CC_SYMBOLS) -std=gnu++98 $(INCLUDE_PATHS) -o -g $@ $<	
 
 $(BUILD_DIR)/$(PROJ).elf: $(OBJECTS) $(SYS_OBJECTS)
 	+@echo "Linking: $@"
