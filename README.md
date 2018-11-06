@@ -47,6 +47,8 @@ Primero, verificar que el `pyocd-gdbserver` este correctamente configurado en Ec
 * En el campo *Executable* debe indicar `pyocd-gdbserver.exe` (sin la extensión en Linux o MacOS), y el campo *Folder* debe contener el *path* al ejecutable (por ejemplo, en Windows `C:\Python27\Scripts`).
 * Hacer clic en **[Ok]**.
 
+En caso de usar Linux, verificar que no existan problemas de permisos para acceder a la placa, ejecutando `pyocd-tool list`. Si no se encuentra la placa, seguir las instrucciones [en esta página](https://pypi.org/project/pyOCD/).
+
 A continuación se creará y ejecutará una configuración de *debug*:
 * Seleccionar **[Run > Debug Configurations...]** en el menú de Eclipse.
 * En la nueva ventana, hacer doble clic sobre **[GDB PyOCD debugging]** en el menú izquierdo. Esto crea una nueva configuración basada en este perfil, con el nombre del proyecto activo.
