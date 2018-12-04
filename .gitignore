@@ -47,3 +47,10 @@ language.settings.xml
 
 # ignore contents of build directory
 build/**
+
+# ignore contents of freertos directory
+freertos/**
+
+# ignore contents of trace directory
+trace/**
+
